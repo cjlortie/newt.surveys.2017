@@ -7,11 +7,11 @@ editor_options:
 <br>
 ![](./newt.jpg)  
 
-####Newt likelihood survey for tail damage
+###Newt likelihood survey for tail damage
 SVL is snout-to-vent (SVL) in mm.
-Net survey, random sweeps, Taricha torosa v Taricha granulosa) and whether their tails had been nibbled off (y/n).
+Net survey, random sweeps, Taricha torosa v Taricha granulosa and whether their tails had been nibbled off (y/n).
 
-###EDA
+####EDA
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 data <- read_csv("data/max.newt.2017.csv")
@@ -30,8 +30,7 @@ ggplot(counts, aes(tail.tipped, n, fill = Species)) +
   labs(x = "tail damage", y = "counts")
 
 ggplot(data, aes(Species, SVL)) + 
-  geom_bar(stat = "identity") + 
-  scale_fill_brewer(palette = "Greens") +
+  geom_boxplot() + 
   labs(x = "species", y = "SVL (mm)")
 
 #model####
@@ -47,7 +46,7 @@ anova(m, test = "Chisq")
 
 ```
 
-###Interpretation  
-1. Glanulosa is larger and less damaged.  
+####Interpretation  
+1. Granulosa is larger and less damaged.  
 
-2. There are statisticall significant differences in damage to tail tips between the two species when you control for size.  
+2. There are statistically significant differences in damage to tail tips between the two species when you control for size.  
